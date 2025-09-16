@@ -41,8 +41,8 @@ docker run --name MinecraftBasicServer -d \
 	--env 'JAR_NAME=server' \
 	--env 'GAME_PORT=25565' \
 	--env 'XMX_SIZE=4096' \
-  --env 'XMS_SIZE=4096' \
-  --env 'ACCEPT_EULA=true' \
+	--env 'XMS_SIZE=4096' \
+	--env 'ACCEPT_EULA=true' \
 	--env 'UID=99' \
 	--env 'GID=100' \
 	--volume /mnt/user/data/java/graalvm8:/runtime \
