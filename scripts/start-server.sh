@@ -9,7 +9,9 @@ else
 fi
 
 echo "---Checking for Minecraft Server executable ---"
-if [ ! -z "${JVM_CUSTOM_COMMAND}" ]; then
+if [ ! -z "${CUSTOM_LAUNCH_SCRIPT}" ]; then
+	echo "---Detected CUSTOM_LAUNCH_SCRIPT: ${CUSTOM_LAUNCH_SCRIPT} skipping Check for Minecraft Server executable!---"
+elif [ ! -z "${JVM_CUSTOM_COMMAND}" ]; then
 	echo "---Detected JVM_CUSTOM_COMMAND: ${JVM_CUSTOM_COMMAND} skipping Check for Minecraft Server executable!---"
 else
 	echo "---Please make sure that '${JAR_NAME}.jar' is in the main directory!---"
@@ -74,7 +76,9 @@ fi
 
 echo "---Starting Server---"
 cd ${SERVER_DIR}
-if [ -z "${JVM_CUSTOM_COMMAND}" ]; then
+if [ -z "${CUSTOM_LAUNCH_SCRIPT}" ]; then
+	screen -S Minecraft -L -Logfile ${SERVER_DIR}/masterLog.0 -d -m ${SERVER_DIR}/${CUSTOM_LAUNCH_SCRIPT}
+elif [ -z "${JVM_CUSTOM_COMMAND}" ]; then
 	screen -S Minecraft -L -Logfile ${SERVER_DIR}/masterLog.0 -d -m ${RUNTIME_DIR}/bin/java ${EXTRA_JVM_PARAMS} -Xmx${XMX_SIZE}M -Xms${XMS_SIZE}M -jar ${SERVER_DIR}/${JAR_NAME}.jar nogui ${GAME_PARAMS}
 else
 	screen -S Minecraft -L -Logfile ${SERVER_DIR}/masterLog.0 -d -m ${RUNTIME_DIR}/bin/java ${JVM_CUSTOM_COMMAND}

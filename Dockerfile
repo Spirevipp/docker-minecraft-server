@@ -1,7 +1,7 @@
 FROM ich777/debian-baseimage
 
-LABEL org.opencontainers.image.authors="admin@minenet.at"
-LABEL org.opencontainers.image.source="https://github.com/ich777/docker-minecraft-basic-server"
+LABEL org.opencontainers.image.authors="spirevipp.x@gmail.com"
+LABEL org.opencontainers.image.source="https://github.com/spirevipp/docker-minecraft-server"
 
 RUN apt-get update && \
 	apt-get -y install --no-install-recommends screen curl jq unzip && \
@@ -14,7 +14,6 @@ RUN wget -O /tmp/gotty.tar.gz https://github.com/yudai/gotty/releases/download/v
 ENV DATA_DIR="/serverdata"
 ENV RUNTIME_DIR="/runtime"
 ENV SERVER_DIR="${DATA_DIR}/serverfiles"
-ENV RUNTIME_NAME="changeme"
 ENV JAR_NAME="server"
 ENV GAME_PARAMS=""
 ENV GAME_PORT=25565
@@ -24,6 +23,7 @@ ENV XMX_SIZE=4096
 ENV XMS_SIZE=4096
 ENV EXTRA_JVM_PARAMS=""
 ENV JVM_CUSTOM_COMMAND=""
+ENV CUSTOM_LAUNCH_SCRIPT=""
 ENV ACCEPT_EULA="false"
 ENV UMASK=000
 ENV UID=99
