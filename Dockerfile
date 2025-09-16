@@ -12,16 +12,16 @@ RUN wget -O /tmp/gotty.tar.gz https://github.com/yudai/gotty/releases/download/v
 	rm -rf /tmp/gotty.tar.gz
 
 ENV DATA_DIR="/serverdata"
+ENV RUNTIME_DIR="/runtime"
 ENV SERVER_DIR="${DATA_DIR}/serverfiles"
-ENV RUNTIME_NAME="jre17"
+ENV RUNTIME_NAME="changeme"
 ENV JAR_NAME="server"
-ENV GAME_V=""
 ENV GAME_PARAMS=""
 ENV GAME_PORT=25565
 ENV ENABLE_WEBCONSOLE="true"
 ENV GOTTY_PARAMS="-w --title-format MinecraftJavaEdition"
-ENV XMX_SIZE=1024
-ENV XMS_SIZE=1024
+ENV XMX_SIZE=4096
+ENV XMS_SIZE=4096
 ENV EXTRA_JVM_PARAMS=""
 ENV JVM_CUSTOM_COMMAND=""
 ENV ACCEPT_EULA="false"
